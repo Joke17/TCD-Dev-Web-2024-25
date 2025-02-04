@@ -13,7 +13,7 @@
 
     $id = R::store($ambientes);
 
-    header('Location:criarambiente.php?criado=sim')
+    header('Location:criarambientes.php?criado=sim')
 
 ?>
 

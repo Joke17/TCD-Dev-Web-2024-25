@@ -28,7 +28,8 @@
                 <label for="categoria">Categoria: </label>
                 <input type="text" name="categoria" id="categoria"> <br><br>
                 <label for="ambiente">Ambiente: </label>
-                <input type="text" name="ambiente" id="ambiente">
+                <input type="text" name="ambiente" id="ambiente"> <br><br>
+                <input type="submit" value="Criar">
             </fieldset>
         </form>
 
