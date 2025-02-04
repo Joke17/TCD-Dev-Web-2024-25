@@ -23,7 +23,12 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     </header>
     <main>
         <h1>Home</h1>
-        <form action="login.php" method="get">
+        <?php
+            if(isset($_GET['usuario'])){
+                echo "<h3 style=\"color:red\">Usuário não encontrado</h3>";
+            }
+        ?>
+        <form action="login.php" method="get">  
             <fieldset>
                 <legend>Reserva de Ambientes</legend>
                 <label for="nome">Nome: </label>
