@@ -59,7 +59,7 @@ include_once 'testanome.php'
 
     <header>
         <?php
-        include '/xampp/htdocs/web2024/trab3tri/inc/cabecalho.inc.php';
+        include 'inc\cabecalho.inc.php';
         ?>
     </header>
     <main>
@@ -151,7 +151,7 @@ include_once 'testanome.php'
 
     <footer>
         <?php
-        include '/xampp/htdocs/web2024/trab3tri/inc/rodape.inc.php';
+        include 'inc\rodape.inc.php';
         ?>
     </footer>
 </body>
