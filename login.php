@@ -15,13 +15,19 @@
         if($user['nome'] == $_GET['nome']){
             if($user['senha'] == $_GET['senha']){
                 $valido = "true";
+                if($user['admin'] == 1){
+                    $admin = true;
+                }
             }
         }
     }
     if($valido == "true"){
         $_SESSION['nome'] = $_GET['nome'];
-        if($user['nome']->admin == 1){
+        if($admin){
             $_SESSION['admin'] = true;
+        } else {
+            $_SESSION['admin'] = false;
+
         }
         header('Location:ambiente.php');
     }else{
