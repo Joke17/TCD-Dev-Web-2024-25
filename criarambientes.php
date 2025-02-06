@@ -19,7 +19,7 @@
     <main>
         <?php
             if(isset($_GET['criado'])){
-                echo "<h3 style=\"color=blue>Ambiente criado com sucesso</h3>";
+                echo "<h3 style=\"color=blue\">Ambiente criado com sucesso</h3>";
             }
         ?>
         <form action="armazenaambiente.php" method="get">

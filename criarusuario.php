@@ -18,9 +18,9 @@
 
     <main>
         <?php
-            // if(isset($_GET['criado'])){
-            //     echo "<h3 style=\"color=blue>Usuário criado com sucesso</h3>";
-            // }
+            if(isset($_GET['criado'])){
+                echo "<h3 style=\"color=blue\">Usuário criado com sucesso</h3>";
+            }
         ?>
         <form action="armazenausuario.php" method="get">
             <fieldset>
