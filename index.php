@@ -32,7 +32,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <fieldset>
                 <legend>Reserva de Ambientes</legend>
                 <label for="nome">Nome: </label>
-                <input type="text" id="senha" name="senha"> <br>
+                <input type="text" id="nome" name="nome"> <br>
                 <label for="nome">Senha: </label>
                 <input type="text" id="senha" name="senha"> <br>
                 <input type="submit" value="Entrar">

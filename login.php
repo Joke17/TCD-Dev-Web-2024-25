@@ -20,6 +20,9 @@
     }
     if($valido == "true"){
         $_SESSION['nome'] = $_GET['nome'];
+        if($user['nome']->admin == 1){
+            $_SESSION['admin'] = true;
+        }
         header('Location:ambiente.php');
     }else{
         header('Location:index.php?usuario=null');
