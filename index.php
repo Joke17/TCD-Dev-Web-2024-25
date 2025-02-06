@@ -25,15 +25,17 @@ if (session_status() == PHP_SESSION_ACTIVE) {
         <h1>Home</h1>
         <?php
             if(isset($_GET['usuario'])){
-                echo "<h3 style=\"color:red\">Usuário não encontrado</h3>";
+                echo "<h3 style=\"color:red\">Nome ou senha incorretos</h3>";
             }
         ?>
         <form action="login.php" method="get">  
             <fieldset>
                 <legend>Reserva de Ambientes</legend>
                 <label for="nome">Nome: </label>
-                <input type="text" id="nome" name="nome">
-                <input type="submit" value="OK">
+                <input type="text" id="senha" name="senha"> <br>
+                <label for="nome">Senha: </label>
+                <input type="text" id="senha" name="senha"> <br>
+                <input type="submit" value="Entrar">
             </fieldset>
         </form>
     </main>
