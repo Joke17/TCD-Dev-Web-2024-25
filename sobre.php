@@ -63,7 +63,7 @@
            Felipe Gonçalves Oliveria</h1>
         <p><b>Email:</b> fgo@aluno.ifnmg.edu.br</p>
         <div class="image">
-            <img src="./imgs/" alt="foto de Felipe" />
+            <img src="./imgs/Felipe.jpeg" alt="foto de Felipe" />
         </div>
 
         <br>
