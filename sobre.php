@@ -63,7 +63,7 @@
            Felipe Gonçalves Oliveria</h1>
         <p><b>Email:</b> fgo@aluno.ifnmg.edu.br</p>
         <div class="image">
-            <img src="./imgs/joaquim.jpeg" alt="foto de joaquim" />
+            <img src="./imgs/" alt="foto de Felipe" />
         </div>
 
         <br>
@@ -73,7 +73,7 @@
             João Eduardo Garção Rodrigues</h1>
         <p><b>Email:</b> jegr1@aluno.ifnmg.edu.br</p>
         <div class="image">
-            <img src="./imgs/joaquim.jpeg" alt="foto de joaquim" />
+            <img src="./imgs/joao.jpeg" alt="foto de Joao" />
         </div>
 
        
