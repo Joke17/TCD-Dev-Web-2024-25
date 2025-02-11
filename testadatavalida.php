@@ -12,9 +12,15 @@ if (isset($_GET['data'])) {
 
 
 
-    if (($anoselecionado < $anohoje) && ($messelecionado < $meshoje) && ($diaselecionado < $diahoje)) {
+    if (($anoselecionado < $anohoje)) {
         header('Location:calendario.php?invalido=true');
-    }else {
+    }
+    if ($messelecionado < $meshoje) {
+        header('Location:calendario.php?invalido=true');
+    }
+    if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje)) {
+        header('Location:calendario.php?invalido=true');
+     } else {
         header("Location:calendario.php?data=$dataselecionada");
     }
 
@@ -28,4 +34,3 @@ if (isset($_GET['data'])) {
     //     header("Location:ambiente.php?data=$dataselecionada");
     // }
 }
-?>

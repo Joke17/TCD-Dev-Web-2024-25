@@ -7,17 +7,18 @@ if (session_status() == PHP_SESSION_NONE) {
 if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     echo "Você está na página Home.";
 } else {
+    date_default_timezone_set("America/Fortaleza");
+    $horario = date('g');
+    if($horario > 0 && $horario <12){
+        $saudacao = "Bom dia";
+    }
+    if($horario >= 12 && $horario <17){
+        $saudacao = "BOA TARDE";
+    }
+    if($horario > 17 && $horario <= 23){
+        $saudacao = "Boa noite";
+    }
     if (strpos($_SERVER['REQUEST_URI'], 'sobre.php') == false) {
-        $horario = date('g');
-        if($horario > 0 && $horario <12){
-            $saudacao = "Bom dia";
-        }
-        if($horario > 12 && $horario <17){
-            $saudacao = "BOA TARDE";
-        }
-        if($horario > 17 && $horario <= 23){
-            $saudacao = "Boa noite";
-        }
         echo "<h3> $saudacao " . $_SESSION['nome'] . "!";
         echo "<br>Reserva de ambientes - 2024</h3><br>";
     }

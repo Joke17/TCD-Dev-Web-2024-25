@@ -3,7 +3,7 @@ include_once 'testanome.php';
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
-$_SESSION['ambiente'] == $_GET['ambiente'];
+$_SESSION['ambiente'] = $_GET['ambiente'];
 ?>
 
 <!DOCTYPE html>
