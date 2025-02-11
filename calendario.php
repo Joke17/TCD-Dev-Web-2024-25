@@ -1,9 +1,11 @@
 <?php
 include_once 'testanome.php';
-if(session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$_SESSION['ambiente'] = $_GET['ambiente'];
+if (isset($_GET['ambiente'])) {
+    $_SESSION['ambiente'] = $_GET['ambiente'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -118,11 +120,11 @@ $_SESSION['ambiente'] = $_GET['ambiente'];
             for ($i = 1; $i <= $diasmes; $i++) {
 
                 // $dataCompleta = date('Y-m', strtotime($data)) . '-' . $i;
-        
+
                 // echo "<td>" . $i . "</td>";
-        
+
                 // echo "<a href=\"ambiente.php?$dataCompleta\"></a>";
-        
+
 
                 $diaFormatado = str_pad($i, 2, '0', STR_PAD_LEFT);
 
@@ -139,7 +141,7 @@ $_SESSION['ambiente'] = $_GET['ambiente'];
             }
 
 
-            if(date('w', strtotime($dataCompletaCerta)) < 6){
+            if (date('w', strtotime($dataCompletaCerta)) < 6) {
                 for ($i = 0; $i < (7 - (($diasmes + $diassemana) % 7)); $i++) {
                     echo "<td>&nbsp;</td>";
                 }

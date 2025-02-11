@@ -1,4 +1,7 @@
 <?php
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
 if (isset($_GET['data'])) {
     $dataselecionada = $_GET['data'];
 
@@ -21,7 +24,8 @@ if (isset($_GET['data'])) {
     if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje)) {
         header('Location:calendario.php?invalido=true');
      } else {
-        header("Location:calendario.php?data=$dataselecionada");
+        $_SESSION['data'] = $dataselecionada;
+        header("Location:reservarhorario.php?data=$dataselecionada");
     }
 
     // if ($anoselecionado < $anohoje) {
