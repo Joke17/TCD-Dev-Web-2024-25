@@ -1,6 +1,10 @@
 <?php
-include_once 'testanome.php'
-    ?>
+include_once 'testanome.php';
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+$_SESSION['ambiente'] == $_GET['ambiente'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">

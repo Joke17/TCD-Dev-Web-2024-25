@@ -30,7 +30,7 @@ include_once 'testanome.php';
         // echo "<h3>Data da reserva: " . $_GET['data'] . "</h3><br>";
         ?>
 
-        <form action="sumario.php" method="get">
+        <form action="calendario.php" method="get">
             <fieldset>
                 <legend>Ambientes para reserva</legend>
 
