@@ -16,6 +16,11 @@
     </header>
 
     <main>
+        <?php
+            for($i=8;$i<=18;$i++){
+                echo "<a href=\"armazenareserva.php?hora=$i\">$i</a> <br>";
+            }
+        ?>
         
     </main>
 

@@ -8,7 +8,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     echo "Você está na página Home.";
 } else {
     date_default_timezone_set("America/Fortaleza");
-    $horario = date('g');
+    $horario = date('G');
     if($horario > 0 && $horario <12){
         $saudacao = "Bom dia";
     }

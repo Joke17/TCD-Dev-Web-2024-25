@@ -42,10 +42,10 @@ include_once 'testames.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        include_once '/xampp/htdocs/web2024/trab3tri/rb/rb.php';
+        include_once '/rb/rb.php';
 
         R::setup(
-            'mysql:host=127.0.0.1;dbname=reservaambientes',
+            'mysql:host=127.0.0.1;dbname=tcd2024',
             'root',
             ''
         );
