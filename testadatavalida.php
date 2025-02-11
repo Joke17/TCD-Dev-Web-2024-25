@@ -25,7 +25,7 @@ if (isset($_GET['data'])) {
         header('Location:calendario.php?invalido=true');
      } else {
         $_SESSION['data'] = $dataselecionada;
-        header("Location:reservarhorario.php?data=$dataselecionada");
+        header("Location:reservarhorario.php");
     }
 
     // if ($anoselecionado < $anohoje) {

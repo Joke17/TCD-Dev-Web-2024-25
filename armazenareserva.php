@@ -6,12 +6,13 @@ R::setup(
     'root',
     ''
 );
-
-
+if(session_status() == PHP_SESSION_NONE){
+session_start();
+}
 
 $novareserva = R::dispense('reservas');
 $novareserva->ambiente = $_SESSION['ambiente'];
-$novareserva->data_reserva = $_GET['data'];
+$novareserva->data_reserva = $_SESSION['data'];
 $novareserva->horareservada = $_GET['hora'];
 
 $id = R::store($novareserva);

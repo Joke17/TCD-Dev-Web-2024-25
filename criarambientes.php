@@ -22,7 +22,7 @@
                 echo "<h3 style=\"color=blue\">Ambiente criado com sucesso</h3>";
             }
         ?>
-        <form action="armazenaambiente.php" method="get">
+        <form action="armazenaambientecriado.php" method="get">
             <fieldset>
                 <legend>Criar Ambiente</legend>
                 <label for="categoria">Categoria: </label>
