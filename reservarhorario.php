@@ -44,21 +44,23 @@
 
                 $datacomreserva = R::find('reservas', 'data_reserva LIKE ?', [$_SESSION['data']]);
 
-            if($datacomreserva == null){ //se houver reserva naquela data, aqui coonfere os horários e os deixa impossíveis de reservar
+            // if($datacomreserva == null){ //se houver reserva naquela data, aqui coonfere os horários e os deixa impossíveis de reservar
+            //     for ($i = 7; $i <= 18; $i++) {
+            //         echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+            //     }
+            
                 for ($i = 7; $i <= 18; $i++) {
-                    echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
-                }
-            } else{ 
-                for ($i = 7; $i <= 18; $i++) {
+                    $horariodisponivel = true;
                     foreach($datacomreserva as $reserva){
                         if($reserva->ambiente == $_SESSION['ambiente'] && $reserva->horareservada == $i){
-                            echo "<p style=\"color:red\">$i:00</p><br>";
-                            break;
-                        }else{
-                            echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                            $horariodisponivel = false;
                             break;
                         }
-
+                    }
+                    if($horariodisponivel){
+                        echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                    }else{
+                        echo "<p style=\"color:red\">$i:00</p><br>";
                     }
                         // foreach ($reservasfeitas as $reserva) {
                         //     if (($reserva->ambiente == $_SESSION['ambiente']) && ($reserva->data_reserva == $_SESSION['data']) &&($reserva->horareservada == $i)) {
@@ -73,10 +75,12 @@
                         // }                    
                 }
             }
-        }
+        
 
 
         ?>
+
+        <a href="minhasreservas.php">Finalizar reserva</a>
 
     </main>
 
