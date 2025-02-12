@@ -24,7 +24,7 @@
             'root',
             ''
         );
-
+        
         echo var_dump($_SESSION);
 
         $reservasfeitas = R::findAll('reservas');
@@ -34,18 +34,43 @@
                 echo "<a href=\"armazenareserva.php?hora=$i\">$i:00</a> <br>";
             }
         } else {
-            for ($i = 8; $i <= 18; $i++) {
-                $rodou = false;
-                foreach ($reservasfeitas as $reserva) {
-                        if ($reserva->ambiente == $_SESSION['ambiente']) {
-                            $rodou = true;
-                            if ($reserva->horareservada == $i) {
-                                echo "<p style=\"color:red\">$hora:00 <br>";
-                            } else {
-                                echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
-                            }
+            // foreach ($reservasfeitas as $reserva) { //confere se há reservas para aquele ambiente na data desejada
+            //     if (($reserva->ambiente == $_SESSION['ambiente']) && ($reserva->data_reserva == $_SESSION['data'])) {
+            //         $datacomreserva = "sim";
+            //     }else{
+            //         $datacomreserva = "nao";
+            //     }
+            // }
+
+                $datacomreserva = R::find('reservas', 'data_reserva LIKE ?', [$_SESSION['data']]);
+
+            if($datacomreserva == null){ //se houver reserva naquela data, aqui coonfere os horários e os deixa impossíveis de reservar
+                for ($i = 7; $i <= 18; $i++) {
+                    echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                }
+            } else{ 
+                for ($i = 7; $i <= 18; $i++) {
+                    foreach($datacomreserva as $reserva){
+                        if($reserva->ambiente == $_SESSION['ambiente'] && $reserva->horareservada == $i){
+                            echo "<p style=\"color:red\">$i:00</p><br>";
+                            break;
+                        }else{
+                            echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                            break;
                         }
-                    
+
+                    }
+                        // foreach ($reservasfeitas as $reserva) {
+                        //     if (($reserva->ambiente == $_SESSION['ambiente']) && ($reserva->data_reserva == $_SESSION['data']) &&($reserva->horareservada == $i)) {
+                        //         echo "<p style=\"color:red\">$i:00</p><br>";
+                        //         $horaroinvalido = true;
+                        //     }else{
+                        //         $horaroinvalido = false;
+                        //     }
+                        // }
+                        // if($horaroinvalido == false){
+                        //     echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                        // }                    
                 }
             }
         }

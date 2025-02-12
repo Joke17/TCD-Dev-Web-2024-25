@@ -18,10 +18,10 @@ if (isset($_GET['data'])) {
     if (($anoselecionado < $anohoje)) {
         header('Location:calendario.php?invalido=true');
     }
-    if ($messelecionado < $meshoje) {
+    if ($messelecionado < $meshoje && $anoselecionado <= $anohoje) {
         header('Location:calendario.php?invalido=true');
     }
-    if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje)) {
+    if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje) && ($anoselecionado < $anohoje)) {
         header('Location:calendario.php?invalido=true');
      } else {
         $_SESSION['data'] = $dataselecionada;
