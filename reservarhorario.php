@@ -82,7 +82,7 @@
 
         ?>
 
-        <a href="sumario.php">Finalizar reserva</a>
+        <a href="minhasreservas.php">Finalizar reserva</a>
 
     </main>
 
