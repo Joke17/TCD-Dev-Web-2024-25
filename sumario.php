@@ -101,9 +101,10 @@ NNN;
             printf(
                 $corpotabela,
                 $value->id,
-                $value->nome,
-                $value->datareserva,
-                $value->ambiente
+                $value->nome_reservante,
+                $value->ambiente,
+                $value->data_reservada,
+                $value->hora_reservada
             );
         }
 
