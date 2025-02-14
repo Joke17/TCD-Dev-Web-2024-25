@@ -1,3 +1,22 @@
+<?php
+if(isset($_GET['criada'])){
+    include_once '/rb/rb.php';
+
+    R::setup('mysql:host=127.0.0.1;dbname=tcd2024',
+    'root',
+    '');
+
+    $novacategoria = R::dispense('categorias');
+    $novacategoria->nome_categoria = $_GET['criada'];
+
+    $id = R::store($novacategoria);
+
+    R::close();
+
+    header('Location:criarambientes.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,20 +37,65 @@
 
     <main>
         <?php
+
+            include_once '/rb/rb.php';
+
+            R::setup('mysql:host=127.0.0.1;dbname=tcd2024',
+            'root',
+            '');
+
+            if(isset($_GET['newcat'])){
+
+                $newcat = <<<CCC
+                <form action="criarambientes.php" method="get">
+                <fieldset>
+                    <legend>Criar nova categoria</legend>
+                    <label for="criada">Nome da nova categoria: </label>
+                    <input type="text" name="criada">
+                    <input type="submit" value="Criar">
+                </form>
+CCC;
+                
+                echo $newcat;
+                
+            }else{
             if(isset($_GET['criado'])){
                 echo "<h3 style=\"color=blue\">Ambiente criado com sucesso</h3>";
             }
-        ?>
-        <form action="armazenaambientecriado.php" method="get">
-            <fieldset>
-                <legend>Criar Ambiente</legend>
-                <label for="categoria">Categoria: </label>
-                <input type="text" name="categoria" id="categoria"> <br><br>
-                <label for="ambiente">Ambiente: </label>
-                <input type="text" name="ambiente" id="ambiente"> <br><br>
-                <input type="submit" value="Criar">
+            $categorias = R::findAll('categorias');
+            $numerodecategorias = count($categorias);
+
+            $inicioformcatregoria = <<<AAA
+            <form action=\"armazenaambientecriado.php\" method=\"get\">
+                <fieldset>
+                    <legend>Criar Ambiente</legend>
+                    <label for="categoria">Esolha a categoria do ambiente</label> <br>
+                    <select name="categoria" id="categoria" size=$numerodecategorias)>
+AAA;
+                    
+            $fimformcategoria = <<<BBB
+            </select> <br><br>
+            <label for="ambiente">Ambiente: </label>
+            <input type="text" name="ambiente" id="ambiente"> <br><br>
+            <input type="submit" value="Criar">
             </fieldset>
-        </form>
+            </form>
+BBB;
+            
+            echo $inicioformcatregoria;
+            
+            foreach ($categorias as $value) {
+                echo "<option value=\"$value->nome_categoria\">$value->nome_categoria</option>";
+            }
+
+            echo $fimformcategoria;
+
+            echo "<a href=\"criarambientes.php?newcat=sim\">Criar nova categoria</a>";
+        }
+        ?>
+
+
+        <br><br>
 
         <a href="ambiente.php">Voltar</a>
     </main>
