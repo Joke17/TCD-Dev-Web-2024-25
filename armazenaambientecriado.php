@@ -9,7 +9,7 @@
 
     $ambientes = R::dispense('ambientes');
     $ambientes->categoria = $_GET['categoria'];
-    $ambientes->ambiente = $_GET['ambiente'];
+    $ambientes->nome_ambiente = $_GET['ambiente'];
 
     $id = R::store($ambientes);
 

@@ -27,36 +27,48 @@ include_once 'testanome.php';
             session_start();
         }
         echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
-        // echo "<h3>Data da reserva: " . $_GET['data'] . "</h3><br>";
-        ?>
 
+        include_once '/rb/rb.php';
+
+        R::setup('mysql:host=127.0.0.1;dbname=tcd2024',
+        'root',
+        '');
+
+        $ambientes = R::findAll('ambientes');
+        $numerodeambientes = count($ambientes);
+
+        $inicioformambiente = <<<AAA
         <form action="calendario.php" method="get">
             <fieldset>
                 <legend>Ambientes para reserva</legend>
 
-                <!-- <input type="checkbox" name="labinfoa" id="labinfoa">
-                <label for="labinfoa">Laboratório de Informática A</label><br>
-                <input type="checkbox" name="labinfob" id="labinfob">
-                <label for="labinfob">Laboratório de Informática B</label> <br>
-                <input type="checkbox" name="auditorio" id="auditorio">
-                <label for="auditorio">Auditório</label> <br>
-                <input type="checkbox" name="quadra" id="quadra">
-                <label for="quadra">Quadra</label> <br>
-                <input type="checkbox" name="estac" id="estac">
-                <label for="estac">Estacionamento</label> <br> -->
+                <select name="ambiente" id="ambiente" size=$numerodeambientes>
+AAA;
 
-                <select name="ambiente" id="ambiente" size="5">
-                    <option value="labinfoa">Laboratório de Informática A</option>
-                    <option value="labinfob">Laboratório de Informática B</option>
-                    <option value="auditorio">Auditório</option>
-                    <option value="quadra">Quadra</option>
-                    <option value="estac">Estacionamento</option>
+        $fimformambiente = <<<BBB
                 </select>
-
+                <br>
+                <br>
                 <input type="submit" value="Reservar">
 
             </fieldset>
         </form>
+BBB;
+        
+        echo $inicioformambiente;
+
+        foreach ($ambientes as $value) {
+            echo "<option value=\"$value->nome_ambiente\">$value->nome_ambiente</option>";
+        }
+
+        echo $fimformambiente;
+
+        ?>
+
+
+                    
+
+
     </main>
     <footer>
         <?php
