@@ -17,16 +17,24 @@ if (isset($_GET['data'])) {
 
     if (($anoselecionado < $anohoje)) {
         header('Location:calendario.php?invalido=true');
+        break;
     }
     if ($messelecionado < $meshoje && $anoselecionado <= $anohoje) {
         header('Location:calendario.php?invalido=true');
+        break;
     }
+    if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje)) {
+        header('Location:calendario.php?invalido=true');
+        break;
+    } 
     if (($diaselecionado < $diahoje) && ($messelecionado <= $meshoje) && ($anoselecionado < $anohoje)) {
         header('Location:calendario.php?invalido=true');
-     } else {
+        break;
+    } 
+    
         $_SESSION['data'] = $dataselecionada;
         header("Location:reservarhorario.php");
-    }
+
 
     // if ($anoselecionado < $anohoje) {
     //     header('Location:calendario.php?invalido=true');

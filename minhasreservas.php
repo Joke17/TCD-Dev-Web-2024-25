@@ -1,6 +1,6 @@
 <?php
 include_once 'testanome.php';
-include_once 'testames.php';
+// include_once 'testames.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,7 @@ include_once 'testames.php';
         // $id = R::store($reserva);
 
 
-        echo "<h2>Reserva Concluída com sucesso</h2>";
+        echo "<h2>Suas reservas ".  $_SESSION['nome'] . "</h2>";
 
         // echo "<p>O usuário <b>" . $_SESSION['nome'] . "</b> reservou o ambiente <b>" . $_SESSION['ambiente'] . "</b> na data <b>" . $_SESSION['datacompleta'] . "</b>. ID da reserva " . $reserva->id . "</p>";
 
@@ -95,8 +95,6 @@ NNN;
 
         $reservasusuario = R::find('reservas', 'nome_reservante LIKE ?', [$_SESSION['nome']]);
 
-        echo "<details>
-                        <summary>Todas as Reservas</summary>";
 
         echo $iniciotabela;
 
@@ -112,8 +110,7 @@ NNN;
         }
 
         echo "  </tbody>
-                    </table>    
-                </details>";
+                    </table>";
 
         R::close();
         ?>

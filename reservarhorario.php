@@ -27,29 +27,30 @@
 
         echo var_dump($_SESSION);
 
-        $reservasfeitas = R::findAll('reservas');
-
+        
         // if ($reservasfeitas == null) { // verifica se há reserva na tabela no banco 
-        //     for ($i = 8; $i <= 18; $i++) {
-        //         echo "<a href=\"armazenareserva.php?hora=$i\">$i:00</a> <br>";
-        //     }
-        // } else {
-            // foreach ($reservasfeitas as $reserva) { //confere se há reservas para aquele ambiente na data desejada
-            //     if (($reserva->ambiente == $_SESSION['ambiente']) && ($reserva->data_reserva == $_SESSION['data'])) {
-            //         $datacomreserva = "sim";
-            //     }else{
-            //         $datacomreserva = "nao";
+            //     for ($i = 8; $i <= 18; $i++) {
+                //         echo "<a href=\"armazenareserva.php?hora=$i\">$i:00</a> <br>";
+                //     }
+                // } else {
+                    // foreach ($reservasfeitas as $reserva) { //confere se há reservas para aquele ambiente na data desejada
+                        //     if (($reserva->ambiente == $_SESSION['ambiente']) && ($reserva->data_reserva == $_SESSION['data'])) {
+                            //         $datacomreserva = "sim";
+                            //     }else{
+                                //         $datacomreserva = "nao";
             //     }
             // }
-
-            $datacomreserva = R::find('reservas', 'data_reservada LIKE ?', [$_SESSION['data']]);
-
+            
+            
             // if($datacomreserva == null){ //se houver reserva naquela data, aqui coonfere os horários e os deixa impossíveis de reservar
-            //     for ($i = 7; $i <= 18; $i++) {
-            //         echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
-            //     }
-
-            // echo var_dump($datacomreserva);
+                //     for ($i = 7; $i <= 18; $i++) {
+                    //         echo "<p><a href=\"armazenareserva.php?hora=$i\">$i:00</a></p> <br>";
+                    //     }
+                    
+                    // echo var_dump($datacomreserva);
+                    
+            $reservasfeitas = R::findAll('reservas');
+            $datacomreserva = R::find('reservas', 'data_reservada LIKE ?', [$_SESSION['data']]);
 
             for ($i = 7; $i <= 18; $i++) {
                 $horariodisponivel = true;

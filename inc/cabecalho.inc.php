@@ -24,8 +24,9 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     }
     echo "<a href=\"Logout.php\">Logout</a> <br>";
     echo "<a href=\"index.php\">Home</a> <br>";
+    echo "<a href=\"minhasreservas.php\">Minhas Reservas</a><br>";
     if($_SESSION['admin'] == 'sim'){
         echo "<a href=\"criarambientes.php\">Criar Ambientes</a> <br>";
-        echo "<a href=\"criarusuario.php\">Criar Usuário</a>";
+        echo "<a href=\"criarusuario.php\">Criar Usuário</a> <br>";
     }
 }
