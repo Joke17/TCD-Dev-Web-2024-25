@@ -48,6 +48,28 @@
 
         <br>
 
+        
+        <br>
+        
+        <h1
+        style="color: fafafa; background-color: 33A474; border-style: 15px; box-shadow: 10px 10px 10px black; text-decoration-style: solid; margin: 10px;">
+        Felipe Gonçalves Oliveria</h1>
+        <p><b>Email:</b> fgo@aluno.ifnmg.edu.br</p>
+        <div class="image">
+            <img src="./imgs/Felipe.jpg" alt="foto de Felipe" />
+        </div>
+
+        <br>
+        
+        <h1
+        style="color: fafafa; background-color: 33A474; border-style: 15px; box-shadow: 10px 10px 10px black; text-decoration-style: solid; margin: 10px;">
+            João Eduardo Garção Rodrigues</h1>
+            <p><b>Email:</b> jegr1@aluno.ifnmg.edu.br</p>
+        <div class="image">
+            <img src="./imgs/joao.jpg" alt="foto de Joao" />
+        </div>
+
+        
         <h1
             style="color: fafafa; background-color: 33A474; border-style: 15px; box-shadow: 10px 10px 10px black; text-decoration-style: solid; margin: 10px;">
             Joaquim Júneo Santos Oliveira</h1>
@@ -55,28 +77,6 @@
         <div class="image">
             <img src="./imgs/joaquim.jpeg" alt="foto de joaquim" />
         </div>
-
-        <br>
-
-        <h1
-            style="color: fafafa; background-color: 33A474; border-style: 15px; box-shadow: 10px 10px 10px black; text-decoration-style: solid; margin: 10px;">
-           Felipe Gonçalves Oliveria</h1>
-        <p><b>Email:</b> fgo@aluno.ifnmg.edu.br</p>
-        <div class="image">
-            <img src="./imgs/Felipe.jpeg" alt="foto de Felipe" />
-        </div>
-
-        <br>
-
-        <h1
-            style="color: fafafa; background-color: 33A474; border-style: 15px; box-shadow: 10px 10px 10px black; text-decoration-style: solid; margin: 10px;">
-            João Eduardo Garção Rodrigues</h1>
-        <p><b>Email:</b> jegr1@aluno.ifnmg.edu.br</p>
-        <div class="image">
-            <img src="./imgs/joao.jpeg" alt="foto de Joao" />
-        </div>
-
-       
 
     </main>
 
