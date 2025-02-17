@@ -10,6 +10,7 @@ include_once 'testanome.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumário</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/36842ecef1.js" crossorigin="anonymous"></script>
     <style>
 
 
@@ -74,18 +75,20 @@ include_once 'testanome.php';
                         <th>Data da reserva</th>
                         <th>Ambiente reservado</th>
                         <th>Hora reservada</th>
+                        <th>Excluir</th>
                     </thead>
                     <tbody>
 AAA;
 
         $corpotabela = <<<NNN
             <tr>
-                            <td>%s</td>
-                            <td>%s</td>
-                            <td>%s</td>
-                            <td>%s</td>
-                            <td>%s:00</td>
-                        </tr>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s:00</td>
+                <td><a href="excluirreserva.php?id=%s"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
 NNN;
 
 
@@ -94,19 +97,20 @@ NNN;
 
         echo $iniciotabela;
 
-        foreach ($reservasusuario as $key => $value) {
+        foreach ($reservasusuario as $value) {
             printf(
                 $corpotabela,
                 $value->id,
                 $value->nome_reservante,
                 $value->ambiente,
                 $value->data_reservada,
-                $value->hora_reservada
+                $value->hora_reservada,
+                $value->id
             );
         }
 
-        echo "  </tbody>
-                    </table>";
+        echo " </tbody>
+            </table>";
 
         R::close();
         ?>

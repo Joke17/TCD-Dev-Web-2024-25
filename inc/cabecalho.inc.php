@@ -23,7 +23,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
         echo "<br>Reserva de ambientes - 2024</h3><br>";
     }
     echo "<a href=\"Logout.php\">Logout</a> <br>";
-    echo "<a href=\"index.php\">Home</a> <br>";
+    echo "<a href=\"ambiente.php\">Home</a> <br>";
     echo "<a href=\"minhasreservas.php\">Minhas Reservas</a><br>";
     if($_SESSION['admin'] == 'sim'){
         echo "
