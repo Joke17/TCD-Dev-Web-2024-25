@@ -28,5 +28,6 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     if($_SESSION['admin'] == 'sim'){
         echo "<a href=\"criarambientes.php\">Criar Ambientes</a> <br>";
         echo "<a href=\"criarusuario.php\">Criar Usuário</a> <br>";
+        echo "<a href=\"todasasreservas.php\">Todas as reservas</a> <br>";
     }
 }
