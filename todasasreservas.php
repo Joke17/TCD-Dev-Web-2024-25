@@ -10,11 +10,11 @@ include_once 'testanome.php';
     <title>Sumário</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        details {
+        /* details {
             border: solid 1px black;
             border-radius: 7px;
 
-        }
+        } */
 
         table {
             margin: 5px auto;
@@ -32,16 +32,13 @@ include_once 'testanome.php';
 <body>
     <header>
         <?php
-        include '/xampp/htdocs/web2024/trab3tri/inc/cabecalho.inc.php'
+        include '/inc/cabecalho.inc.php'
             ?>
     </header>
     <main>
-        <h1>Sumário</h1>
+        <h1>Todas as Reservas Feitas</h1>
         <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        include_once '/xampp/htdocs/web2024/trab3tri/rb/rb.php';
+        include_once '/rb/rb.php';
 
         R::setup(
             'mysql:host=127.0.0.1;dbname=tcd2024',
@@ -95,7 +92,7 @@ NNN;
     </main>
     <footer>
         <?php
-        include '/xampp/htdocs/web2024/trab3tri/inc/rodape.inc.php'
+        include '/inc/rodape.inc.php'
             ?>
     </footer>
 </body>

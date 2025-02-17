@@ -20,7 +20,7 @@ include_once 'testanome.php';
     <header>
         <?php
         include 'inc\cabecalho.inc.php'
-            ?>
+        ?>
     </header>
     <main>
         <h1>Seleção de ambiente</h1>

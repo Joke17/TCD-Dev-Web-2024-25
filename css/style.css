@@ -4,7 +4,6 @@
 html {
     font-family: "Inter", serif;
     font-optical-sizing: auto;
-    /* font-weight: <weight>; */
     font-style: normal;
 }
 
@@ -17,14 +16,12 @@ html {
     box-shadow: 10px 10px 10px black;
 }
 
-
-
 body {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 4%;
     margin-right: 4%;
-    background-color: yellowgreen;
+
 }
 
 div {
@@ -50,4 +47,15 @@ div {
     border-radius: 50%;
     border: 5px solid black;
     margin: 0;
+}
+
+table {
+    margin: 5px auto;
+    border: solid 3px black;
+    padding: 3px;
+}
+
+th {
+    border: solid 1px black;
+    padding: 5px;
 }

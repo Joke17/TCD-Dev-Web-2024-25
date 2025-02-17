@@ -26,8 +26,24 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     echo "<a href=\"index.php\">Home</a> <br>";
     echo "<a href=\"minhasreservas.php\">Minhas Reservas</a><br>";
     if($_SESSION['admin'] == 'sim'){
-        echo "<a href=\"criarambientes.php\">Criar Ambientes</a> <br>";
-        echo "<a href=\"criarusuario.php\">Criar Usuário</a> <br>";
+        echo "
+        <details>
+            <summary>Ambiente</summary>
+            <ul>
+            <li><a href=\"criarambientes.php\">Criar Ambiente</a></li>
+            <li><a href=\"excluirambiente.php\">Excluir Ambiente</a></li>
+            </ul>
+        </details>
+        ";
+        echo "
+        <details>
+            <summary>Usuário</summary>
+            <ul>
+            <li><a href=\"criarusuario.php\">Criar Usuário</a></li>
+            <li><a href=\"excluirusuario.php\">Excluir Usuário</a></li>
+            </ul>
+        </details>
+        ";
         echo "<a href=\"todasasreservas.php\">Todas as reservas</a> <br>";
     }
 }
