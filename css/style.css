@@ -50,12 +50,18 @@ div {
 }
 
 table {
-    margin: 5px auto;
+    /* margin: 5px auto; */
     border: solid 3px black;
-    padding: 3px;
+    /* padding: 3px; */
 }
 
-th {
+th, td {
     border: solid 1px black;
-    padding: 5px;
+    /* padding: 5px; */
+}
+
+details {
+    border: solid 1px black;
+    border-radius: 7px;
+
 }

@@ -11,11 +11,7 @@ include_once 'testanome.php';
     <title>Sumário</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        details {
-            border: solid 1px black;
-            border-radius: 7px;
 
-        }
 
         table {
             margin: 5px auto;
