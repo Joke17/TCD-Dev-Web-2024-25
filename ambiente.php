@@ -51,6 +51,8 @@ AAA;
                 </select>
                 <br>
                 <br>
+
+                
                 <input type="submit" value="Reservar">
 
             </fieldset>
@@ -64,6 +66,12 @@ BBB;
         }
 
         echo $fimformambiente;
+
+        $fotosaporra = R::findAll('ambientes');
+        foreach($fotos as $ft){
+            echo $ft->imagem;
+        }
+
 
         ?>
 

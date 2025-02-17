@@ -10,6 +10,7 @@
     $ambientes = R::dispense('ambientes');
     $ambientes->categoria = $_GET['categoria'];
     $ambientes->nome_ambiente = $_GET['ambiente'];
+    $ambientes->imagem = $_GET['fotoamb'];
 
     $id = R::store($ambientes);
 

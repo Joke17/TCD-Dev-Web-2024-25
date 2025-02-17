@@ -77,6 +77,8 @@ AAA;
             </select> <br><br>
             <label for="ambiente">Ambiente: </label>
             <input type="text" name="ambiente" id="ambiente"> <br><br>
+            <label for="fotoamb">Foto do ambiente</label>
+            <input type="file" name="fotoamb" id="fotoamb"> <br><br>
             <input type="submit" value="Criar">
             </fieldset>
             </form>
@@ -93,6 +95,7 @@ BBB;
             echo "<a href=\"criarambientes.php?newcat=sim\">Criar nova categoria</a>";
         }
         ?>
+
 
 
         <br><br>
