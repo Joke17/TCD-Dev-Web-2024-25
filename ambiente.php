@@ -31,10 +31,10 @@
         if($_SESSION['visitante'] == !true){
             echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
             $str1 = "Ambientes para reserva";
-            $btn = "Reservar";
+            // $btn = "Reservar";
         } else {
             $str1 = "Ambientes";
-            $btn = "Ver";
+            // $btn = "Ver";
         }
 
         include_once '/rb/rb.php';
@@ -44,34 +44,56 @@
         '');
 
         $ambientes = R::findAll('ambientes');
-        $numerodeambientes = count($ambientes);
+        $categorias = R::findAll('categorias');
+//         $numerodeambientes = count($ambientes);
 
-        $inicioformambiente = <<<AAA
-        <form action="calendario.php" method="get">
-            <fieldset>
-                <legend>$str1</legend>
+//         $inicioformambiente = <<<AAA
+//         <form action="calendario.php" method="get">
+//             <fieldset>
+//                 <legend>$str1</legend>
 
-                <select name="ambiente" id="ambiente" size=$numerodeambientes>
-AAA;
+//                 <select name="ambiente" id="ambiente" size=$numerodeambientes>
+// AAA;
 
-        $fimformambiente = <<<BBB
-                </select>
-                <br>
-                <br>
+//         $fimformambiente = <<<BBB
+//                 </select>
+//                 <br>
+//                 <br>
                 
-                <input type="submit" value="$btn">
+//                 <input type="submit" value="$btn">
 
-            </fieldset>
-        </form>
-BBB;
+//             </fieldset>
+//         </form>
+// BBB;
         
-        echo $inicioformambiente;
+//         echo $inicioformambiente;
 
-        foreach ($ambientes as $value) {
-            echo "<option value=\"$value->nome_ambiente\">$value->nome_ambiente</option>";
+//         foreach ($ambientes as $value) {
+//             echo "<option value=\"$value->nome_ambiente\">$value->nome_ambiente</option>";
+//         }
+
+//         echo $fimformambiente;
+
+        $scrptambientes = <<<DDD
+        <div>
+            <div><img src="" alt="Imagem do ambiente %s"></div>
+            <div><p><a href="calendario.php">Reservar</a></p></div>
+        </div>
+DDD;
+
+        echo "<h1>$str1</h1>";
+
+        foreach($categorias as $categoria){
+            echo "<h2>$categoria->nome_categoria</h2>";
+            foreach($ambientes as $ambiente){
+                if($categoria->nome_categoria == $ambiente->categoria){
+                    printf(
+                        $scrptambientes,
+                        $ambiente->nome_ambiente
+                    );
+                }
+            }
         }
-
-        echo $fimformambiente;
 
         ?>
 
