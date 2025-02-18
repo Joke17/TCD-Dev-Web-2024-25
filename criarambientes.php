@@ -66,7 +66,7 @@ CCC;
             $numerodecategorias = count($categorias);
 
             $inicioformcatregoria = <<<AAA
-            <form action="armazenaambientecriado.php" method=\"get\">
+            <form action="armazenaambientecriado.php" method="POST" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Criar Ambiente</legend>
                     <label for="categoria">Esolha a categoria do ambiente</label> <br>

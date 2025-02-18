@@ -8,8 +8,8 @@ R::setup(
 );
 
 $ambientes = R::dispense('ambientes');
-$ambientes->categoria = $_GET['categoria'];
-$ambientes->nome_ambiente = $_GET['ambiente'];
+$ambientes->categoria = $_POST['categoria'];
+$ambientes->nome_ambiente = $_POST['ambiente'];
 
 // echo var_dump($_FILES["imagem"]);
 
@@ -17,60 +17,64 @@ $diretorio_upload = "uploads/";  // Certifique-se que este diretório existe e t
 $tamanho_maximo = 5 * 1024 * 1024;  // 5MB em bytes
 $tipos_permitidos = ["image/jpeg", "image/png", "image/gif"];
 
-// Verifica se o formulário foi submetido com os dados necessários
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['nome'], $_GET['tipo'], $_FILES['imagem'])) {
-    
-    // Validação do campo de imagem
-    $imagem = $_FILES['imagem'];
-    $extensaoPermitida = ['image/jpeg', 'image/png', 'image/gif'];
-   
-   
-    if (!in_array($imagem['type'], $extensaoPermitida)) {
-        echo '<div class="msg">' . '<p class="msgRed">'  . 'Formato de imagem não permitido. Apenas JPG, PNG e GIF são aceitos.' . '</p>' .  '</div>';
-        exit;
+// Verifica se recebeu um arquivo
+if (isset($_FILES["imagem"])) {
+    $arquivo = $_FILES["imagem"];
+    $erro = null;
+
+    // Validações
+    if ($arquivo["error"] !== UPLOAD_ERR_OK) {
+        $erro = "Erro no upload do arquivo.";
+    } elseif (!in_array($arquivo["type"], $tipos_permitidos)) {
+        $erro = "Tipo de arquivo não permitido. Apenas JPG, PNG e GIF são aceitos.";
+    } elseif ($arquivo["size"] > $tamanho_maximo) {
+        $erro = "Arquivo muito grande. Tamanho máximo permitido é 5MB.";
     }
 
-    // Verifica se o ambiente já está cadastrado
-    $ambiente = R::findOne('ambiente', ' nome = ? ', [$_POST['nome']]);
-    
-    if ($ambiente) {
-        echo '<div class="msg">' .  '<p class="msgRed">'  . 'Ambiente já Cadastrado' . '</p>' . '</div>';
-    } 
-    
-    else {
-        // Processamento da imagem
-        $diretorioDestino = 'img/ambientes/';
-        
-        
-        if (!is_dir($diretorioDestino)) {
-            mkdir($diretorioDestino, 0777, true); // Cria o diretório, se não existir
-        }
+    if ($erro === null) {
+        // Gera um nome único para o arquivo
+        $extensao = pathinfo($arquivo["name"], PATHINFO_EXTENSION);
+        $novo_nome = uniqid() . "." . $extensao;
+        $caminho_completo = $diretorio_upload . $novo_nome;
 
-        // Gerar um nome único para o arquivo de imagem
-        
-        
-        $nomeImagem = uniqid('ambiente_', true) . '.' . pathinfo($imagem['name'], PATHINFO_EXTENSION);
-        $caminhoImagem = $diretorioDestino . $nomeImagem;
+        // Move o arquivo para o diretório de destino
+        if (move_uploaded_file($arquivo["tmp_name"], $caminho_completo)) {
+            // Salva informações no banco de dados
+            
+            
+            $ambientes->imagem = $caminho_completo;
+            $id = R::store($ambientes);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // try {
+            //     $pdo = new PDO("mysql:host=localhost;dbname=seu_banco", "usuario", "senha");
+            //     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Move a imagem para o diretório final
-        if (move_uploaded_file($imagem['tmp_name'], $caminhoImagem)) {
-            // Salva os dados no banco
-            $ambiente = R::dispense('ambiente');
-            $ambiente->nome = $_POST['nome'];
-            $ambiente->imagem = $nomeImagem; // Salva o nome da imagem no banco
-            $ambiente->tipo = $_POST['tipo'];
-            R::store($ambiente);
-            echo  '<div class="msg">' . '<p class="msgGreen">'  . 'Ambiente cadastrado com sucesso!' . '</p>' . '</div>';
+            //     $stmt = $pdo->prepare("INSERT INTO imagens (nome_arquivo, caminho, data_upload) VALUES (?, ?, NOW())");
+            //     $stmt->execute([$arquivo["name"], $novo_nome]);
+
+            //     echo "Upload realizado com sucesso!";
+            // } catch (PDOException $e) {
+            //     echo "Erro ao salvar no banco de dados: " . $e->getMessage();
+            // }
         } else {
-            echo '<div class="msg">' . '<p class="msgRed">'  . 'Erro ao carregar a imagem' . '</p>' . '</div>';
+            echo "Erro ao mover o arquivo.";
         }
-
-        // Fecha a conexão com o banco de dados
-        R::close();
+    } else {
+        echo $erro;
     }
+} else {
+    echo "aaaaaaa";
 }
 
-// $id = R::store($ambientes);
+
 
 
 // $ambientes->imagem = $_GET['fotoamb'];
