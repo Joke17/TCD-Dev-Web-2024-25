@@ -77,9 +77,10 @@ AAA;
             </select> <br><br>
             <label for="ambiente">Ambiente: </label>
             <input type="text" name="ambiente" id="ambiente"> <br><br>
-            <label for="fotoamb">Foto do ambiente</label>
-            <input type="file" name="fotoamb" id="fotoamb"> <br><br>
-            <input type="submit" value="Criar">
+            <label for="imagem">Foto do ambiente</label>
+           
+            <input type="file" name="imagem" accept="image/*" required> 
+            <button type="submit">Enviar Imagem</button>
             </fieldset>
             </form>
 BBB;
