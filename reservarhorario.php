@@ -67,6 +67,7 @@ AAA;
             $diahoje = date('d');
             $datareserva = $_SESSION['data'];
 
+
             for ($i = 7; $i <= 18; $i++) {
                 
                 $horariodisponivel = true;
@@ -82,9 +83,13 @@ AAA;
                 }
 
                 if ($horariodisponivel == false) {
-                    echo "<td><p style:\"color=red\">$i:00</p> </td>";
+                    echo "<td><p style=\"color:red\">$i:00</p> </td>";
                 } else {
-                    echo "<td> <a href=\"armazenareserva.php?hora=$i\">$i:00</a></td>";
+                    if($_SESSION['visitante']){
+                        echo "<td>$i:00</td>";
+                    }else {
+                        echo "<td> <a href=\"armazenareserva.php?hora=$i\">$i:00</a></td>";
+                    }
                 }
 
                 if($index % 3 == 2){
@@ -108,13 +113,13 @@ AAA;
 
             echo "  </tbody>
             </table>";  
-        
 
-
-
-        ?>
-        <a href="minhasreservas.php">Finalizar reserva</a>
-
+            if($_SESSION['visitante']){
+                echo "<a href=\"ambiente.php\">Voltar</a>";
+            } else {
+                echo " <a href=\"minhasreservas.php\">Finalizar reserva</a>";
+            }
+        ?>  
     </main>
 
     <footer>

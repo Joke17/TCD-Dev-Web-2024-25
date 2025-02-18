@@ -1,5 +1,5 @@
 <?php
-include_once 'testanome.php';
+// include_once 'testanome.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

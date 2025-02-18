@@ -1,5 +1,5 @@
 <?php
-include_once 'testanome.php';
+// include_once 'testanome.php';
 // include_once 'testames.php';
 // include_once 'testadatavalida.php';
 ?>
@@ -28,7 +28,14 @@ include_once 'testanome.php';
         if (session_status() == !PHP_SESSION_ACTIVE) {
             session_start();
         }
-        echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
+        if($_SESSION['visitante'] == !true){
+            echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
+            $str1 = "Ambientes para reserva";
+            $btn = "Reservar";
+        } else {
+            $str1 = "Ambientes";
+            $btn = "Ver";
+        }
 
         include_once '/rb/rb.php';
 
@@ -42,7 +49,7 @@ include_once 'testanome.php';
         $inicioformambiente = <<<AAA
         <form action="calendario.php" method="get">
             <fieldset>
-                <legend>Ambientes para reserva</legend>
+                <legend>$str1</legend>
 
                 <select name="ambiente" id="ambiente" size=$numerodeambientes>
 AAA;
@@ -51,9 +58,8 @@ AAA;
                 </select>
                 <br>
                 <br>
-
                 
-                <input type="submit" value="Reservar">
+                <input type="submit" value="$btn">
 
             </fieldset>
         </form>
@@ -66,12 +72,6 @@ BBB;
         }
 
         echo $fimformambiente;
-
-        $fotosaporra = R::findAll('ambientes');
-        foreach($fotos as $ft){
-            echo $ft->imagem;
-        }
-
 
         ?>
 

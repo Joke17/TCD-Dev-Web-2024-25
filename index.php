@@ -38,6 +38,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
                 <input type="submit" value="Entrar">
             </fieldset>
         </form>
+        <a href="login.php?visitante=sim">Entra como vistante</a>
         <!-- <a href="ambiente.php?publico=sim">Entar sem Login</a> -->
     </main>
     <footer>
