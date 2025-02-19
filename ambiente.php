@@ -12,7 +12,12 @@
     <title>Ambiente</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        
+        h1, h2{
+            color: navy;
+        }
+        .nomecats{
+            color: gray;
+        }
     </style>
 </head>
 
@@ -75,20 +80,22 @@
 //         echo $fimformambiente;
 
         $scrptambientes = <<<DDD
-        <div>
-            <div><img src="" alt="Imagem do ambiente %s"></div>
-            <div><p><a href="calendario.php">Reservar</a></p></div>
+        <div class="ambiente">
+            <div class="imagemambiente"><img src="%s" alt="Imagem do ambiente %s"></div>
+            <div class="reservarambiente"><p><a href="calendario.php?ambiente=%s">Reservar</a></p></div>
         </div>
 DDD;
 
-        echo "<h1>$str1</h1>";
+        echo "<h1 style=\"text-align: center;\">$str1</h1>";
 
         foreach($categorias as $categoria){
-            echo "<h2>$categoria->nome_categoria</h2>";
+            echo "<h2 class=\"nomecats\">$categoria->nome_categoria</h2>";
             foreach($ambientes as $ambiente){
                 if($categoria->nome_categoria == $ambiente->categoria){
                     printf(
                         $scrptambientes,
+                        $ambiente->imagem,
+                        $ambiente->nome_ambiente,
                         $ambiente->nome_ambiente
                     );
                 }

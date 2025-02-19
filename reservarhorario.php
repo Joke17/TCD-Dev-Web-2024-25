@@ -50,10 +50,9 @@
                     // echo var_dump($datacomreserva);
 
                 $iniciotabela = <<<AAA
-                <table>
-                    <thead>
-                        <th>Horários Para Reserva</th>
-                    </thead>
+                <div class="divhorarios">
+                    <h2>Horários Para Reserva</h2>
+                    <table class="horarios">
                     <tbody>
 AAA;
                     
@@ -88,7 +87,7 @@ AAA;
                     if($_SESSION['visitante']){
                         echo "<td>$i:00</td>";
                     }else {
-                        echo "<td> <a href=\"armazenareserva.php?hora=$i\">$i:00</a></td>";
+                        echo "<td><p><a href=\"armazenareserva.php?hora=$i\" class=\"hora\">$i:00</a></p></td>";
                     }
                 }
 
@@ -115,10 +114,11 @@ AAA;
             </table>";  
 
             if($_SESSION['visitante']){
-                echo "<a href=\"ambiente.php\">Voltar</a>";
+                echo "<div id=\"btnfinalizar\"><p><a href=\"ambiente.php\">Voltar</a></div></p>";
             } else {
-                echo " <a href=\"minhasreservas.php\">Finalizar reserva</a>";
+                echo "<div id=\"btnfinalizar\"><p ><a href=\"minhasreservas.php\">Finalizar reserva</a></div></p>";
             }
+            echo "</div>";
         ?>  
     </main>
 

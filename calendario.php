@@ -19,11 +19,6 @@ if (isset($_GET['ambiente'])) {
 
 
     <style>
-        html {
-            font-family: "Pixelify Sans", sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-        }
 
         table {
             /* border-collapse: collapse; */
@@ -46,16 +41,20 @@ if (isset($_GET['ambiente'])) {
             border: solid 2px black;
         }
 
-        tr:nth-child(2n) {
-            background-color: lightgrey;
-        }
-
         h1 {
             text-align: center;
         }
 
         td:hover {
             background-color: lightblue;
+        }
+
+        form, h3{
+            text-align: center;
+        }
+
+        a{
+            text-decoration-line: underline;
         }
     </style>
 </head>

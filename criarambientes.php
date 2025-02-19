@@ -79,8 +79,8 @@ AAA;
             <input type="text" name="ambiente" id="ambiente"> <br><br>
             <label for="imagem">Foto do ambiente</label>
            
-            <input type="file" name="imagem" accept="image/*" required> 
-            <button type="submit">Enviar Imagem</button>
+            <input type="file" name="imagem" accept="image/*" required> <br>
+            <button type="submit">Criar</button>
             </fieldset>
             </form>
 BBB;

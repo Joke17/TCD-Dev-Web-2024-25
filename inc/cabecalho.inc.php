@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
-    echo "Você está na página Home.";
+    echo "<h4>Você está na página Home.</h4>";
 } else {
     date_default_timezone_set("America/Fortaleza");
     $horario = date('G');
@@ -25,12 +25,14 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
             echo "<h3> $saudacao " . $_SESSION['nome'] . "!";
             echo "<br>Reserva de ambientes - 2024</h3><br>";
         }
-        echo "<a href=\"Logout.php\">Logout</a> <br>";
-        echo "<a href=\"ambiente.php\">Home</a> <br>";
-        echo "<a href=\"minhasreservas.php\">Minhas Reservas</a><br>";
+        echo "<nav>";
+        echo "<p class=\"itemheader\"><a href=\"Logout.php\">Logout</a></p>";
+        echo "<p class=\"itemheader\"><a href=\"ambiente.php\">Home</a></p>";
+        echo "<p class=\"itemheader\"><a href=\"minhasreservas.php\">Minhas Reservas</a></p>";
         if($_SESSION['admin'] == 'sim'){
+            echo "<p class=\"itemheader\"><a href=\"todasasreservas.php\">Todas as reservas</a></p> <br>";
             echo "
-            <details>
+            <details class=\"itemheader\">
                 <summary>Ambiente</summary>
                 <ul>
                 <li><a href=\"criarambientes.php\">Criar Ambiente</a></li>
@@ -39,7 +41,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
             </details>
             ";
             echo "
-            <details>
+            <details class=\"itemheader\">
                 <summary>Usuário</summary>
                 <ul>
                 <li><a href=\"criarusuario.php\">Criar Usuário</a></li>
@@ -47,7 +49,9 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
                 </ul>
             </details>
             ";
-            echo "<a href=\"todasasreservas.php\">Todas as reservas</a> <br>";
+           
         }
+        echo "</nav>
+        <hr>";
     }
 }

@@ -44,6 +44,9 @@ if (isset($_FILES["imagem"])) {
             
             $ambientes->imagem = $caminho_completo;
             $id = R::store($ambientes);
+
+            header('Location:criarambientes.php?criado=sim');
+
             
             
             

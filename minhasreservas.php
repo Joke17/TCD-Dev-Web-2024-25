@@ -15,15 +15,13 @@ include_once 'testanome.php';
 
 
         table {
-            margin: 5px auto;
-            border: solid 3px black;
-            padding: 3px;
+            width: 70%;
         }
 
-        th {
+        /* th {
             border: solid 1px black;
             padding: 5px;
-        }
+        } */
     </style>
 </head>
 
@@ -72,8 +70,8 @@ include_once 'testanome.php';
                     <thead>
                         <th>ID</th>
                         <th>Reservante</th>
-                        <th>Data da reserva</th>
                         <th>Ambiente reservado</th>
+                        <th>Data da reserva</th>
                         <th>Hora reservada</th>
                         <th>Excluir</th>
                     </thead>
@@ -87,7 +85,7 @@ AAA;
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s:00</td>
-                <td><a href="excluirreserva.php?id=%s"><i class="fa-solid fa-trash"></i></a></td>
+                <td class="excluir"><a href="excluirreserva.php?id=%s"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
 NNN;
 
