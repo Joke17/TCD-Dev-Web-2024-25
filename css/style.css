@@ -52,6 +52,14 @@ nav p{
     margin: 0 15px;
 }
 
+.itemheadervisitante{
+    text-align: center;
+    background-color: aquamarine;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 120px;
+}
+
 header details{
     display: inline-block;
 }

@@ -1,4 +1,4 @@
-<h2>Desenvolvimento Web</h2>
+<h2>Sistema de Reserva de Ambientes</h2>
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -19,7 +19,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
         $saudacao = "Boa noite";
     }
     if($_SESSION['visitante']){
-        echo "<a href=\"Logout.php\">Logout</a> <br>";
+        echo "<p class=\"itemheadervisitante\"><a href=\"logout.php\">Logout</a></p><br>";
     } else {
         if (strpos($_SERVER['REQUEST_URI'], 'ambiente.php') == false) {
             echo "<h3> $saudacao " . $_SESSION['nome'] . "!";
