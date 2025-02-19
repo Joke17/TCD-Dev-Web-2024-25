@@ -1,6 +1,23 @@
 <?php
 include_once 'testanome.php';
 // include_once 'testames.php';
+
+if(isset($_GET['exclusao'])){
+    include_once '/rb/rb.php';
+
+    R::setup(
+        'mysql:host=127.0.0.1;dbname=tcd2024',
+        'root',
+        ''
+    );
+
+    $reservaparaexcluir = R::find('reservas', 'id LIKE ?', [$_GET['id']]);
+    R::trashAll($reservaparaexcluir); // por mais que tenha apenas um elemento, por ser um array é necessário o trashAll
+    R::close();
+    header('Location:todasasreservas.php?excluido=sim');
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +79,10 @@ include_once 'testanome.php';
 
 
         echo "<h2>Suas reservas ".  $_SESSION['nome'] . "</h2>";
+
+        if(isset($_GET['excluido'])){
+            echo "<h3>Reserva excluida com sucesso</h3>";
+        }
 
         // echo "<p>O usuário <b>" . $_SESSION['nome'] . "</b> reservou o ambiente <b>" . $_SESSION['ambiente'] . "</b> na data <b>" . $_SESSION['datacompleta'] . "</b>. ID da reserva " . $reserva->id . "</p>";
 

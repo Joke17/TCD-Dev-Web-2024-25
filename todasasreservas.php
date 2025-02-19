@@ -1,5 +1,22 @@
 <?php
 include_once 'testanome.php';
+
+if(isset($_GET['exclusao'])){
+    include_once '/rb/rb.php';
+
+    R::setup(
+        'mysql:host=127.0.0.1;dbname=tcd2024',
+        'root',
+        ''
+    );
+
+    $reservaparaexcluir = R::find('reservas', 'id LIKE ?', [$_GET['id']]);
+    R::trashAll($reservaparaexcluir); // por mais que tenha apenas um elemento, por ser um array é necessário o trashAll
+    R::close();
+    header('Location:todasasreservas.php?excluido=sim');
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +26,8 @@ include_once 'testanome.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumário</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/36842ecef1.js" crossorigin="anonymous"></script>
+
     <style>
         /* details {
             border: solid 1px black;
@@ -20,10 +39,10 @@ include_once 'testanome.php';
             margin: 5px auto;
             border: solid 3px black;
             padding: 3px;
+            width: 60%;
         }
 
         th {
-            border: solid 1px black;
             padding: 5px;
         }
     </style>
@@ -46,7 +65,9 @@ include_once 'testanome.php';
             ''
         );
 
-        echo "<h2>Todas as Reservas feitas</h2>";
+        if(isset($_GET['excluido'])){
+            echo "<h3>Reserva excluida com sucesso</h3>";
+        }
 
         $iniciotabela = <<<AAA
                 <table>
@@ -55,6 +76,7 @@ include_once 'testanome.php';
                         <th>Reservante</th>
                         <th>Data da reserva</th>
                         <th>Ambiente reservado</th>
+                        <th>Excluir</th>
                     </thead>
                     <tbody>
 AAA;
@@ -65,8 +87,11 @@ AAA;
                             <td>%s</td>
                             <td>%s</td>
                             <td>%s</td>
+                            <td class="excluir"><a href="todasasreservas.php?exclusao=sim&id=%s"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
 NNN;
+
+        
 
         echo $iniciotabela;
 
@@ -77,7 +102,8 @@ NNN;
                 $value->id,
                 $value->nome_reservante,
                 $value->data_reservada,
-                $value->ambiente
+                $value->ambiente,
+                $value->id
             );
         }
 

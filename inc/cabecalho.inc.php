@@ -21,13 +21,15 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     if($_SESSION['visitante']){
         echo "<p class=\"itemheadervisitante\"><a href=\"logout.php\">Logout</a></p><br>";
     } else {
+        $linkhome = "";
         if (strpos($_SERVER['REQUEST_URI'], 'ambiente.php') == false) {
             echo "<h3> $saudacao " . $_SESSION['nome'] . "!";
             echo "<br>Reserva de ambientes - 2024</h3><br>";
+            $linkhome = "<p class=\"itemheader\"><a href=\"ambiente.php\">Home</a></p>";
         }
         echo "<nav>";
         echo "<p class=\"itemheader\"><a href=\"Logout.php\">Logout</a></p>";
-        echo "<p class=\"itemheader\"><a href=\"ambiente.php\">Home</a></p>";
+        echo $linkhome;
         echo "<p class=\"itemheader\"><a href=\"minhasreservas.php\">Minhas Reservas</a></p>";
         if($_SESSION['admin'] == 'sim'){
             echo "<p class=\"itemheader\"><a href=\"todasasreservas.php\">Todas as reservas</a></p> <br>";
@@ -36,7 +38,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
                 <summary>Ambiente</summary>
                 <ul>
                 <li><a href=\"criarambientes.php\">Criar Ambiente</a></li>
-                <li><a href=\"excluirambiente.php\">Excluir Ambiente</a></li>
+                <li><a href=\"todosamb.php\">Todos os Ambiente</a></li>
                 </ul>
             </details>
             ";
@@ -45,7 +47,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
                 <summary>Usuário</summary>
                 <ul>
                 <li><a href=\"criarusuario.php\">Criar Usuário</a></li>
-                <li><a href=\"excluirusuario.php\">Excluir Usuário</a></li>
+                <li><a href=\"todosuser.php\">Todos os Usuários</a></li>
                 </ul>
             </details>
             ";

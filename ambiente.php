@@ -36,10 +36,10 @@
         if($_SESSION['visitante'] == !true){
             echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
             $str1 = "Ambientes para reserva";
-            // $btn = "Reservar";
+             $btn = "Reservar";
         } else {
             $str1 = "Ambientes";
-            // $btn = "Ver";
+             $btn = "Ver";
         }
 
         include_once '/rb/rb.php';
@@ -82,7 +82,7 @@
         $scrptambientes = <<<DDD
         <div class="ambiente">
             <div class="imagemambiente"><img src="%s" alt="Imagem do ambiente %s"></div>
-            <div class="reservarambiente"><p><a href="calendario.php?ambiente=%s">Reservar</a></p></div>
+            <div class="reservarambiente"><p><a href="calendario.php?ambiente=%s">$btn</a></p></div>
         </div>
 DDD;
 

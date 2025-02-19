@@ -8,10 +8,10 @@ if(isset($_GET['exclusao'])){
         ''
     );
 
-    $ambienteparaexcluir = R::find('ambientes', 'nome_ambiente LIKE ?', [$_GET['amb']]);
+    $ambienteparaexcluir = R::find('ambientes', 'id LIKE ?', [$_GET['id']]);
     R::trashAll($ambienteparaexcluir); // por mais que tenha apenas um elemento, por ser um array é necessário o trashAll
     R::close();
-    header('Location:excluirambiente.php?excluido=sim');
+    header('Location:todosamb.php?excluido=sim');
 
 }
 ?>
@@ -23,12 +23,14 @@ if(isset($_GET['exclusao'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Usuários</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/36842ecef1.js" crossorigin="anonymous"></script>
 
     <style>
         table {
             margin: 5px auto;
             border: solid 3px black;
             padding: 3px;
+            width: 80%;
         }
 
         th {
@@ -62,17 +64,22 @@ if(isset($_GET['exclusao'])){
         }
 
         $iniciotabela = <<<AAA
-            <table>
-                <thead>
-                    <th>Ambientes</th>
-                </thead>
-                <tbody>
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Ambiente</th>
+                        <th>Excluir</th>
+                    </thead>
+                    <tbody>
 AAA;
+
         $corpotabela = <<<NNN
             <tr>
-                <td>
-                <a href="excluirambiente.php?exclusao=sim&amb=%s">%s</a>
-                </td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td class="excluir"><a href="todosamb.php?exclusao=sim&id=%s"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
 NNN;
         echo $iniciotabela;
@@ -80,8 +87,10 @@ NNN;
         foreach ($ambientes as $value) {
             printf(
                 $corpotabela,
+                $value->id,
+                $value->categoria,
                 $value->nome_ambiente,
-                $value->nome_ambiente
+                $value->id
             );
         }
 

@@ -51,7 +51,7 @@
 
                 $iniciotabela = <<<AAA
                 <div class="divhorarios">
-                    <h2>Horários Para Reserva</h2>
+                    <h2>Horários Disponíveis Para Reserva</h2>
                     <table class="horarios">
                     <tbody>
 AAA;
