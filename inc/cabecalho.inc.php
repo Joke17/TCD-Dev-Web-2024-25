@@ -21,7 +21,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
     if($_SESSION['visitante']){
         echo "<a href=\"Logout.php\">Logout</a> <br>";
     } else {
-        if (strpos($_SERVER['REQUEST_URI'], 'sobre.php') == false) {
+        if (strpos($_SERVER['REQUEST_URI'], 'ambiente.php') == false) {
             echo "<h3> $saudacao " . $_SESSION['nome'] . "!";
             echo "<br>Reserva de ambientes - 2024</h3><br>";
         }
