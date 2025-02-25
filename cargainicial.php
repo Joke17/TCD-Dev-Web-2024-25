@@ -14,7 +14,6 @@
         $usuarios->admin = true;
 
         $id = R::store($usuarios);
-
     }
     header('Location:index.php');
 ?>
