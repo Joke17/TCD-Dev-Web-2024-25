@@ -21,6 +21,9 @@ html {
 a{
     text-decoration: none;
 }
+img[alt]{
+    color: white;
+}
 
 /* cabecalho */
 
