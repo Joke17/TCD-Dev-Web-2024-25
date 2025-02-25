@@ -36,10 +36,10 @@
         if($_SESSION['visitante'] == !true){
             echo "<h2>Nome do reservante: " . $_SESSION['nome'] . "</h2>";
             $str1 = "Ambientes para reserva";
-             $btn = "Reservar";
+            $btn = "Reservar";
         } else {
             $str1 = "Ambientes";
-             $btn = "Ver";
+            $btn = "Ver";
         }
 
         include_once '/rb/rb.php';

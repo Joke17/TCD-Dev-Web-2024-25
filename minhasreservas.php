@@ -25,7 +25,7 @@ if(isset($_GET['exclusao'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumário</title>
+    <title>Minhas Reservas</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/36842ecef1.js" crossorigin="anonymous"></script>
     <style>
