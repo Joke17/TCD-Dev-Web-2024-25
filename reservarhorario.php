@@ -52,6 +52,7 @@
                 $iniciotabela = <<<AAA
                 <div class="divhorarios">
                     <h2>Horários Disponíveis Para Reserva</h2>
+                    <h3>Data da Reserva: %s</h3>
                     <table class="horarios">
                     <tbody>
 AAA;
@@ -59,7 +60,9 @@ AAA;
             $reservasfeitas = R::findAll('reservas');
             $datacomreserva = R::find('reservas', 'data_reservada LIKE ?', [$_SESSION['data']]);
 
-            echo $iniciotabela;
+            $dataformatada = date('d/m/Y', strtotime($_SESSION['data']));
+
+            printf($iniciotabela, $dataformatada);
 
             $index = 0; //variável que controla as linhas
             $horaagora = date('G');
@@ -120,6 +123,7 @@ AAA;
             }
             echo "</div>";
         ?>  
+        
     </main>
 
     <footer>
