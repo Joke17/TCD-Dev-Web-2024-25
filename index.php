@@ -29,7 +29,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             border: 1px solid gray;
             background-color: lightgrey;
             width: 40%;
-            height: 300px;
+            height: 270px;
             margin: 13% auto;
             text-align: center;
             border-radius: 20px;
